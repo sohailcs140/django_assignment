@@ -173,7 +173,7 @@ class Transaction(models.Model):
    - Cache keys
       - ***Users***: `{username}`
       - ***StockData***: `{ticker}`, `{stock_data}`
-      - ***Trsactioins***: `{username}`_transactions, `{username}`_`{start_timestamp}`_`{end_timestamp}`_transactions
+      - ***Trsactioins***: `{username}_transactions`, `{username}_{start_timestamp}_{end_timestamp}_transactions`
 
 
 ## Task Queue with Celery

@@ -1,0 +1,48 @@
+# Ignore Python bytecode files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore local environment variable files
+.env
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore temporary files
+*.swp
+*.swo
+*.tmp
+
+# Ignore Docker-related files
+Dockerfile
+docker-compose.yml
+
+# Ignore node_modules for JS/React projects
+node_modules/
+
+# Ignore compiled code and artifacts
+build/
+dist/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore version control folders
+.git
+.gitignore
+
+# Ignore coverage reports
+coverage/
+*.cover
+*.lcov
+
+# Ignore test results
+test-results/

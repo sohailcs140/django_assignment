@@ -60,26 +60,31 @@ This is a stock trading api built using Django REST Framework (DRF) that allows 
 ### Installation
 
 1. **Clone the Repository**:
-   ```git clone https://github.com/sohailcs140/stock-trading-platform.git
+   ```
+   git clone https://github.com/sohailcs140/stock-trading-platform.git
    cd stock-trading-platform
    ```
 
 2. **Create and Activate Virtual Environment**:
-   ```python -m venv venv
+   ```
+    python -m venv venv
     venv\Scripts\activate
    ```
 
 3. **Install Dependencies**:
-   ```pip install -r requirements.txt
+   ```
+   pip install -r requirements.txt
    ```
 
 4. **Set Up PostgreSQL Database: Ensure PostgreSQL is running and create a database for the project**:
-   ```psql -U postgres
+   ```
+     psql -U postgres
      CREATE DATABASE db_stock;
    ```
 
 5. **Run Migrations**:
-   ```python manage.py migrate
+   ```
+    python manage.py migrate
    ```
 
 
@@ -87,20 +92,24 @@ This is a stock trading api built using Django REST Framework (DRF) that allows 
 
 
 1. **Start Django Development Server**:
-   ```python manage.py runserver
+   ```
+   python manage.py runserver
    ```
 
 2. **Run Redis (if not using Docker)**:
-   ```redis-server
+   ```
+   redis-server
    ```
 
 3. **Start Celery Worker**:
-   ```celery -A config worker -l info --pool=solo
+   ```
+   celery -A config worker -l info --pool=solo
    ```
 
 
 4. **Start Flower for Monitoring Celery**:
-   ```celery -A config flower
+   ```
+   celery -A config flower
    ```
 
 5. Access Swagger API Documentation: Visit `http://localhost:8000/swagger/` for interactive API documentation.
@@ -125,16 +134,16 @@ This is a stock trading api built using Django REST Framework (DRF) that allows 
 ## Data Models
 
 ### User Model
-```class User(models.Model):
-
+```
+class User(models.Model):
     user_id = models.CharField(primary_key=True,max_length=36, default=uuid4)
     username = models.CharField(max_length=50, unique=True,blank=False, null=False)
     balance = models.DecimalField(max_digits=12, decimal_places=2, validators=[MinValueValidator(0.0)])
 ```
 
 ### StockData Model
-```class StockData(models.Model):
-
+```
+class StockData(models.Model):
     ticker = models.CharField(max_length=15, unique=True)
     open_price = models.DecimalField(max_digits=12, decimal_places=2, validators=[MinValueValidator(0.0)])
     close_price = models.DecimalField(max_digits=12, decimal_places=2, validators=[MinValueValidator(0.0)])
@@ -146,7 +155,8 @@ This is a stock trading api built using Django REST Framework (DRF) that allows 
 
 
 ### Transaction Model
-```class Transaction(models.Model):
+```
+class Transaction(models.Model):
     transaction_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transactions')
     ticker = models.CharField(max_length=10)
@@ -179,7 +189,8 @@ This is a stock trading api built using Django REST Framework (DRF) that allows 
    - Visit http://localhost:5555 to access the Flower dashboard for task monitoring.
 
 ## Docker Compose File
-```version: '3.8'
+```
+version: '3.8'
 
 services:
   db:

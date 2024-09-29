@@ -4,8 +4,6 @@
 
 ## Table of Contents
 - [Django Assignment](#django-assignment)
-  - [Stock Trading API - API Documentation](#stock-trading-api---api-documentation)
-  - [Table of Contents](#table-of-contents)
   - [Project Overview](#project-overview)
   - [Tech Stack](#tech-stack)
   - [Setup Guide](#setup-guide)

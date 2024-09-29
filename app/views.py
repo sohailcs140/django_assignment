@@ -133,10 +133,11 @@ class TransactionViewSet(ViewSet):
         """
         Create a new transaction and pass the processing to a Celery task if the request is valid.
         """
+        request_data = request.data.copy()
         if 'transaction_type' in request.data:
-            request.data['transaction_type'] = request.data['transaction_type'].lower()
+            request_data['transaction_type'] = request_data['transaction_type'].lower()
             
-        serialzer:TransactionSerializer = TransactionSerializer(data=request.data)
+        serialzer:TransactionSerializer = TransactionSerializer(data=request_data)
         
         if serialzer.is_valid():
             if self._is_balance_sufficent(serialzer.validated_data):

@@ -2,11 +2,6 @@ from django.db import models
 from uuid import uuid4
 from django.core.validators import MinValueValidator
 
-TRANSACTION_TYPE_CHOICES = [
-        ('buy', 'Buy'),
-        ('sell', 'Sell'),
-    ]
-
 
 class User(models.Model):
     user_id = models.CharField(primary_key=True,max_length=36, default=uuid4)
@@ -43,7 +38,11 @@ class StockData(models.Model):
 
 class Transaction(models.Model):
     
-
+    TRANSACTION_TYPE_CHOICES = [
+        ('buy', 'Buy'),
+        ('sell', 'Sell'),
+    ]
+    
     transaction_id = models.CharField(primary_key=True, max_length=36, default=uuid4)
     user = models.ForeignKey(to="User", on_delete=models.CASCADE, related_name="transactions")
     ticker = models.CharField(max_length=15)
@@ -56,11 +55,3 @@ class Transaction(models.Model):
     class Meta:
         
         ordering = ["-timestamp"]
-    
-    
-    
-
-    
-    
-    
-

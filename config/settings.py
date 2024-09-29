@@ -85,8 +85,6 @@ DATABASES = {
     }
 }
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -137,7 +135,6 @@ REDIS_URL = "redis://localhost:6379/0"
 
 
 CELERY_BROKER_URL = REDIS_URL
-
 CELERY_RESULT_BACKEND = REDIS_URL
 
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True

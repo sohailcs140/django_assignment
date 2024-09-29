@@ -37,11 +37,33 @@ class StockSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         validated_data = super().validate(attrs)
-       
-        if validated_data['low'] > validated_data['high']:
-            
+        low, high, open_price, close_price = validated_data['low'],validated_data['high'],validated_data['open_price'],validated_data['close_price']
+
+        if low > high:
             raise ValidationError({
                 'low': 'The low value must be less than or equal to the high value.'
+            })
+        
+        if open_price > high:
+            raise ValidationError({
+                'open_price': 'The open price value must be less than or equal to the high value.'
+            })
+        
+        
+        if close_price > high:
+            raise ValidationError({
+                'close_price': 'The close price value must be less than or equal to the high value.'
+            })
+        
+        
+        if close_price < low:
+            raise ValidationError({
+                'close_price': 'The close price value must be greater than or equal to the low value.'
+            })
+        
+        if open_price < low:
+            raise ValidationError({
+                'open_price': 'The open price value must be greater than or equal to the low value.'
             })
         
         return validated_data
@@ -50,8 +72,6 @@ class StockSerializer(serializers.ModelSerializer):
 
 class TransactionSerializer(serializers.ModelSerializer):
 
-    
-    
     class Meta:
         model = Transaction
         fields = '__all__'

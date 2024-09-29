@@ -1,11 +1,10 @@
 from celery import shared_task
 from .models import (Transaction, StockData, User)
-from .serializers import TransactionSerializer
 from .utils import delete_from_cache
 from django.db import transaction
 
 
-@shared_task(name="process transaction")
+@shared_task(name="process_transaction")
 def process_transaction_async(validated_data):
     
     with transaction.atomic():

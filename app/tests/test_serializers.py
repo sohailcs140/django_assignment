@@ -141,6 +141,12 @@ class TransactionSerializerTestCases(APITestCase):
     def setUp(self):
         """Set up test data for TransactionSerializer tests"""
         self.user = User.objects.create(username='transaction_user', balance=1000)
+        
+        self.stock = StockData.objects.create(
+            ticker="AAPL",low=90,high=240, open_price=110, close_price=250,
+            volume=120
+            
+        )
         self.transaction_data = {
             'user': self.user.user_id,
             'ticker': 'AAPL',

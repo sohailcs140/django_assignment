@@ -70,9 +70,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 
-DATABASE_HOST = "localhost"
+# DATABASE_HOST = "localhost"
 # for docker use this
-# DATABASE_HOST = "db"
+DATABASE_HOST = "db"
 
 DATABASES = {
     'default': {
@@ -129,9 +129,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CELERY SETTING
 
-REDIS_URL = "redis://localhost:6379/0"
+# REDIS_URL = "redis://localhost:6379/0"
 # for docker use this
-# REDIS_URL = "redis://redis:6379/0"
+REDIS_URL = "redis://redis:6379/0"
 
 
 CELERY_BROKER_URL = REDIS_URL

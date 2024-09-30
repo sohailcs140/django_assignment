@@ -18,7 +18,7 @@ class UserViewSet(ViewSet):
     """
     lookup_field = "username"
     
-    @swagger_auto_schema(query_serializer=UserSerialzier)
+    @swagger_auto_schema(request_body=UserSerialzier)
     def create(self, request):
         """
         Create a new user and store the user data in the cache.
@@ -63,7 +63,7 @@ class SotckViewSet(ViewSet):
     """
     lookup_field:str = "ticker"
     
-    @swagger_auto_schema(query_serializer=StockSerializer)
+    @swagger_auto_schema(request_body=StockSerializer)
     def create(self, request:Request):
         """
         Create a new stock record and clear the stock cache.
@@ -128,7 +128,7 @@ class TransactionViewSet(ViewSet):
     ViewSet to handle transactions, including creation, listing, and retrieval of user transactions.
     """
     
-    @swagger_auto_schema(query_serializer=TransactionSerializer)
+    @swagger_auto_schema(request_body=TransactionSerializer)
     def create(self, request:Request)->Response:
         """
         Create a new transaction and pass the processing to a Celery task if the request is valid.
